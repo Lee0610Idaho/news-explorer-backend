@@ -2,15 +2,14 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const NotFoundError = require("../errors/not-found-error");
 const ConflictError = require("../errors/conflict-error");
-//const { generateToken } = require("../utils/authTokens");
+const { generateToken } = require("../utils/authToken");
 
 module.exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByCredentials(email, password);
-    //const token = generateToken(user);
-    //res.status(200).send({ token });
-    res.status(200).send("hello");
+    const token = generateToken(user);
+    res.status(200).send({ token });
   } catch (err) {
     next(err);
   }

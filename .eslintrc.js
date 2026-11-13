@@ -24,4 +24,9 @@ module.exports = {
     "no-underscore-dangle": ["error", { allow: ["_id"] }],
     "no-unused-vars": ["error", { argsIgnorePattern: "next" }],
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
